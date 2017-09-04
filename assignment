@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+function appendRow() {
+    var tbl = document.getElementById('my-table'),
+        row = tbl.insertRow(tbl.rows.length),      
+        i;
+    // insert table cells to the new row
+    for (i = 0; i < tbl.rows[0].cells.length; i++) {
+        createCell(row.insertCell(i), i, 'row');
+    }
+}
+
+// create DIV element and append to the table cell
+function createCell(cell, text, style) {
+    var div = document.createElement('div'), 
+        txt = document.createTextNode(text); 
+    div.appendChild(txt);                    
+    div.setAttribute('class', style);        
+    div.setAttribute('className', style);    
+    cell.appendChild(div);                   
+}
+function appendColumn() {
+    var tbl = document.getElementById('my-table'),
+        i;
+    // open loop for each row and append cell
+    for (i = 0; i < tbl.rows.length; i++) {
+        createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), i, 'col');
+    }
+}</script>
+</body>
+</html>
